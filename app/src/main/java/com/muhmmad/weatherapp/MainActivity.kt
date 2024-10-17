@@ -13,6 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.muhmmad.weatherapp.navigation.WeatherNavigation
 import com.muhmmad.weatherapp.ui.theme.WeatherAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,7 +21,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             WeatherApp()
         }
@@ -30,6 +30,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun WeatherApp() {
     WeatherAppTheme {
-        Surface(color = MaterialTheme.colorScheme.background, modifier = Modifier.fillMaxSize()) { }
+        Surface(color = MaterialTheme.colorScheme.background, modifier = Modifier.fillMaxSize()) {
+            WeatherNavigation()
+        }
     }
 }
