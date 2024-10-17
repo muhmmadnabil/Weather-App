@@ -1,8 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
     id("kotlin-kapt")
-    id("dagger.hilt.android.plugin")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -67,14 +68,12 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    //Navigation
+    implementation(libs.androidx.navigation.compose)
     //Dagger - Hilt
-    implementation(libs.dagger.hilt.android)
-    implementation(libs.androidx.hilt.lifecycle.viewmodel)
-    // Dagger - Hilt
-    kapt(libs.hilt.android.compiler)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
     kapt(libs.androidx.hilt.compiler)
-    implementation(libs.hilt.navigation.compose)
-    implementation(libs.dagger.hilt.android)
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
@@ -97,4 +96,7 @@ dependencies {
     kapt(libs.room.compiler)
     implementation(libs.androidx.room.ktx)
 
+}
+kapt {
+    correctErrorTypes = true
 }
